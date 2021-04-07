@@ -9,6 +9,11 @@ public class MyClassLoaderTest {
 
 
     public void testClassLoader() throws Exception {
+        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+        while (systemClassLoader != null) {
+            System.out.println(systemClassLoader);
+            systemClassLoader = systemClassLoader.getParent();
+        }
 
         ClassLoader appClassLoader = this.getClass().getClassLoader();
         ClassLoader myClassLoader = new MyClassLoader(appClassLoader.getParent(), appClassLoader);
