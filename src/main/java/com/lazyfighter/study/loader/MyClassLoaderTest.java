@@ -1,11 +1,13 @@
 package com.lazyfighter.study.loader;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 public class MyClassLoaderTest {
 
-    @Test
+    public static void main(String[] args) throws Exception {
+        new MyClassLoaderTest().testClassLoader();
+    }
+
+
     public void testClassLoader() throws Exception {
 
         ClassLoader appClassLoader = this.getClass().getClassLoader();
@@ -13,8 +15,7 @@ public class MyClassLoaderTest {
 
         Class<?> aClass = myClassLoader.loadClass(MyClassLoaderTest.class.getName());
         Object o = aClass.newInstance();
-        Assertions.assertFalse(o instanceof MyClassLoaderTest);
-
+        System.out.println(o instanceof MyClassLoaderTest);
     }
 
 }
